@@ -6,6 +6,10 @@ export default function CanvasUI() {
         
     })
     return (
-
+        <div className="colorPicker">
+            <ul>
+                <li><button></button></li>
+            </ul>
+        </div>
     )
 }
