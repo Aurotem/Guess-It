@@ -1,4 +1,4 @@
-# Guess it!
+# ---Guess it!---
 ---
 "Guess it!" is a drawing game you can play with your friends. The rules are so simple:
 - When it's your turn, draw the given subject. It can be a plant, animal, fruit, anime character, etc.
