@@ -1,35 +1,42 @@
 import { useRef, useEffect } from "react";
-export default function Canvas() {
 
+export default function Canvas() {
   const canvasRef = useRef();
+  //* If the player currently painting
   let isPainting = false;
-  let mouseX;
-  let mouseY;
-  let ctx;
+
+  //* Checks if the player clicked the canvas(Who has the canvas)
   let justClicked = false;
 
+  //* Canvas
+  let ctx;
+
   function handleMouseMove(e) {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    draww();
+    //* Mouse positions
+    let mouseX = e.clientX;
+    let mouseY = e.clientY;
+    draw(mouseX, mouseY);
   }
 
+  //! Create the canvas and connect its Ref
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     canvas.addEventListener("mousemove", handleMouseMove);
-    draw(ctx);
+    ctxTransfer(ctx);
   });
-  function draw(context) {
+  function ctxTransfer(context) {
+    //* Make Canvas ref global
     ctx = context;
   }
+  //! --------------------
 
   function clickHandler(boolValue) {
     isPainting = boolValue;
     boolValue && (justClicked = true);
   }
 
-  function draww() {
+  function draw(mouseX, mouseY) {
     if (isPainting) {
       if (justClicked) {
         ctx.beginPath();
@@ -45,7 +52,7 @@ export default function Canvas() {
       <canvas
         onMouseDown={() => clickHandler(true)}
         onMouseUp={() => clickHandler(false)}
-        onMouseLeave={() => isPainting = false}
+        onMouseLeave={() => (isPainting = false)}
         ref={canvasRef}
         width={700}
         height={700}
