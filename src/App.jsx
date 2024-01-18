@@ -1,7 +1,12 @@
 import Canvas from "./components/Canvas";
-
+import CanvasUI from "./components/CanvasUI";
 function App() {
-return <Canvas/>
+  return (
+    <>
+      <CanvasUI />
+      <Canvas />
+    </>
+  );
 }
 
 export default App;
